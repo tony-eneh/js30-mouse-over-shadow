@@ -26,6 +26,29 @@
 <body>
     <p>YEAH!!</p>
     <script>
+        //get the paragraph
+        let p = document.querySelector('p');
+
+        function moveShadows(e) {
+            //calculate shadow positions
+            let x1 = e.offsetX - p.offsetLeft;
+            let y1 = e.offsetY - p.offsetTop;
+            let x2 = -(e.offsetX - p.offsetLeft);
+            let y2 = e.offsetY - p.offsetTop;
+            let x3 = e.offsetX - p.offsetLeft;
+            let y3 = -(e.offsetY - p.offsetTop);
+            let x4 = -(e.offsetX - p.offsetLeft);
+            let y4 = -(e.offsetY - p.offsetTop);
+
+            //assign four text shadows using current cursor position
+            p.style.textShadow = `${x1}px ${y1}px 0 orange, ${x2}px ${y2}px 0 lawngreen, ${x3}px ${y3}px 0 fuchsia, ${x4}px ${y4}px 0 cadetblue`;
+        }
+
+        //on mouse move
+        document.addEventListener('mousemove', moveShadows)
+
+        // p.style.textShadow = '10px 10px 0 orange, -10px -10px 0 lawngreen';
+        // p.style.textShadow = '';
     </script>
 </body>
 
