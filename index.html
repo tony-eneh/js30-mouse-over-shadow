@@ -20,6 +20,10 @@
             margin: 0;
             font-size: 10em;
         }
+        
+        p {
+            border: 3px solid black;
+        }
     </style>
 </head>
 
@@ -31,21 +35,23 @@
 
         function moveShadows(e) {
             //calculate shadow positions
-            let x1 = e.offsetX - p.offsetLeft;
-            let y1 = e.offsetY - p.offsetTop;
-            let x2 = -(e.offsetX - p.offsetLeft);
-            let y2 = e.offsetY - p.offsetTop;
-            let x3 = e.offsetX - p.offsetLeft;
-            let y3 = -(e.offsetY - p.offsetTop);
-            let x4 = -(e.offsetX - p.offsetLeft);
-            let y4 = -(e.offsetY - p.offsetTop);
+            let x1 = (e.clientX - window.innerWidth / 2);
+            let y1 = (e.clientY - window.innerHeight / 2);
+            let x2 = -(e.clientX - window.innerWidth / 2);
+            let y2 = e.clientY - window.innerHeight / 2;
+            let x3 = e.clientX - window.innerWidth / 2;
+            let y3 = -(e.clientY - window.innerHeight / 2);
+            let x4 = -(e.clientX - window.innerWidth / 2);
+            let y4 = -(e.clientY - window.innerHeight / 2);
 
             //assign four text shadows using current cursor position
-            p.style.textShadow = `${x1}px ${y1}px 0 orange, ${x2}px ${y2}px 0 lawngreen, ${x3}px ${y3}px 0 fuchsia, ${x4}px ${y4}px 0 cadetblue`;
+            p.style.textShadow = `${x1}px ${y1}px 0 orange, ${x2}px ${y2}px 0 pink, ${x3}px ${y3}px 0 aqua, ${x4}px ${y4}px 0 fuchsia`;
         }
 
         //on mouse move
         document.addEventListener('mousemove', moveShadows)
+        document.addEventListener('click', (e) => console.log('document click event', e))
+        p.addEventListener('click', (e) => console.log('p click event', e))
 
         // p.style.textShadow = '10px 10px 0 orange, -10px -10px 0 lawngreen';
         // p.style.textShadow = '';
